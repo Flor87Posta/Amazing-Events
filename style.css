@@ -1,0 +1,111 @@
+header{
+    height: 20vh;
+    display: flex;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+}
+
+main {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+footer{
+    height: 10vh;
+    display: flex;
+    box-shadow: 12px -10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 12px -10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 12px -10px 5px 0px rgba(0,0,0,0.75);
+    margin-top: 10rem;
+
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content:space-between;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#carrusel{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+#home1{
+    font-size: x-large;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.47);
+}
+
+#divcontainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#home{
+    background-color: white;
+    border: 1px solid black;
+    align-content: center;
+    margin-right: 1rem;
+}
+
+#UpcomingEvents{
+    background-color: white;
+    border: 1px solid black;
+    align-content: center;
+    margin-right: 1rem;
+}
+
+#PastEvents{
+    background-color: white;
+    border: 1px solid black;
+    align-content: center;
+    margin-right: 1rem;
+}
+
+#Contact{
+    background-color: white;
+    border: 1px solid black;
+    align-content: center;
+    margin-right: 1rem;
+}
+#Details{
+    background-color: white;
+    border: 1px solid black;
+    align-content: center;
+    margin-right: 1rem;
+}
+#Stats{
+    background-color: white;
+    border: 1px solid black;
+    align-content: center;
+    margin-right: 1rem;
+}
+
+.category{
+    margin-top: 5rem;
+}
+
+.search{
+    margin-top: 5rem;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+}
