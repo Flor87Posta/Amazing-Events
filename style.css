@@ -34,7 +34,7 @@ footer{
 .main{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #carrusel{
@@ -108,4 +108,32 @@ footer{
 .cards{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+.main2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    margin-top: 10rem;
+    margin-left: 30rem;
+}
+
+#maraton{
+    width: 60rem;
+    height: 15rem;
+}
+
+.table{
+    margin-top: 3rem;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
 }
