@@ -17,6 +17,7 @@ main {
 footer{
     height: 10vh;
     display: flex;
+    flex-direction:column;
     box-shadow: 12px -10px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 12px -10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 12px -10px 5px 0px rgba(0,0,0,0.75);
@@ -109,6 +110,7 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
     margin-top: 3rem;
 }
 
