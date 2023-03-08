@@ -119,7 +119,7 @@ function crearTarjetaConInner (evento){
                 <h5 class="card-title">${evento.name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${evento.category}</h6>
                 <p class="card-text">${evento.description}</p>
-                <a href="./details.html" class="card-link">More Info</a>
+                <a href="./details.html?id=${evento._id}" class="card-link">More Info</a>
             </div>
         </div>
         `
@@ -196,7 +196,8 @@ function filtroCruzado (){
 // })
 
 
-//10) AHORA VAMOS CON LA PARTE DE HACER EL DETALLE DE LA TARJETA (DETAILS) DE FORMA DINAMICA:
+//10) AHORA VAMOS CON LA PARTE DE HACER EL DETALLE DE LA TARJETA (DETAILS) DE FORMA DINAMICA: pag nueva details.js
+
 
 
 
