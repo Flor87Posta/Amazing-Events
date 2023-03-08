@@ -139,3 +139,8 @@ footer{
     align-items: center;
     margin-top: 3rem;
 }
+
+input[type="checkbox"]:checked{
+
+background-color: gray;
+}

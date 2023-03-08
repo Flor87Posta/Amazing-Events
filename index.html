@@ -58,21 +58,41 @@
         </div> 
       </section>
       <div class="main">
-        <div class="category">
-          <a class="btn btn-dark" href="#" role="button">Food Fair</a>
+        <div class="category" id="categorias">
+
+
+            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
+            <label class="form-check-label">Option 1</label>
+
+
+            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
+            <label class="form-check-label">Option 1</label>
+
+          <!-- <a class="btn btn-dark" href="#" role="button">Food Fair</a>
           <a class="btn btn-dark" href="#" role="button">Museum</a>
           <a class="btn btn-dark" href="#" role="button">Costume Party</a>
           <a class="btn btn-dark" href="#" role="button">Music Concert</a>
           <a class="btn btn-dark" href="#" role="button">Race</a>
           <a class="btn btn-dark" href="#" role="button">Book Exchange</a>
-          <a class="btn btn-dark" href="#" role="button">Let's go to the cinema</a>
+          <a class="btn btn-dark" href="#" role="button">Let's go to the cinema</a> -->
         </div>
-        <div class="search">
+
+        <!-- <div class="search">
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="text" id="myInput" onkeyup="autocompletado()" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
+        </div> -->
+        <div class="search">
+                    <form class="d-flex" role="search">
+                          <input type="search" id="buscar-pal" class="form-control" placeholder="Buscar" >
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                          <div>
+                              <ul id="demo" class="list-group"></ul>
+                          </div>
+                    </form>
         </div>
+        <!-- onkeyup="autocompletado()"  -->
       </div>
       <section class="cards" id="esSection">
       </section> 
