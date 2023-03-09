@@ -61,7 +61,8 @@ for (let evento of data.events) {
 }
 
 let listaCategorias = data.events.filter(evento => evento.category).map(evento => evento.category).filter( (evento, indice, arrayOriginal) => indice == arrayOriginal.indexOf(evento))
-
+// filter :solo guarda cada pasada si la condicion es true, sino no lo guarda, por eso de cada evento solo guarda evento.category, ya tiene implicito el return
+// map : crea un nuevo array de la misma longitud que el original, ejecutando en cada iteracion la funcion que le mandemos (guarda lo que devuelve la funcion)
 console.log(listaCategorias)
 
 //4) vamos a armar las opciones o checkbox:
@@ -75,13 +76,15 @@ console.log(listaCategorias)
 const $categorias = document.getElementById("categorias")
 
 //ahora si armamos los checkbox, de la listaCategorias quiero que arme una opcion en cada iteracion, usamos un reduce (al estilo del template generado antes):
-
+// reduce es un metodo de arrays que crea algo nuevo de un unico valor, tiene 4 parametros, el nuevo parametro a diferencia del otro es el acumulador,
+// el acumulador arranca desde  "" e itera hasta el ultimo elemento; 
 const opciones = listaCategorias.reduce( (acc, categoria) => {
     return acc += `<input class="form-check-input" type="checkbox" id="check1" name="option1" value="${categoria}">
     <label class="form-check-label">${categoria}</label>`
 }, "" )
 
 console.log(opciones)
+console.log(typeof(opciones))
 
 //ahora lo paso al HTML con la propiedad de DOM o metodo .innerHTML en el div donde puse el id "categorias":
 
@@ -165,6 +168,9 @@ const pal = document.getElementById("buscar-pal");
 // y pintar las tarjetas para que las muestre en html tb, sino quedan en la consola: 
 pal.addEventListener("input", e => {
     const filtrado = filtroCruzado();
+    if (filtroCruzado()==0){
+        return esSection.innerHTML = `<h2> There are no events matching your search </h2>`
+    }
     pintarTarjeta(filtrado, esSection );
 })
 // creo una funcion que vaya filtrando cada palabra o caracter que ingresa el usuario en input pal (lo convierto a minuscula) y lo filtro
@@ -180,6 +186,8 @@ function filtroCruzado (){
     const filtrado = filtroCategorias(data.events)
     return filtroPorTexto(filtrado)
 }
+
+console.log(filtroCruzado())
 
 // ahora vuelvo al event "change" de arriba que le aplique a mi variable $categorias (es el sector donde referencie en el html que quiero que imprima)
 // que es la linea 96 y vuelvo a cambiar las funciones pero ahora con el filtro cruzado (que me incluyen los 2 filtros: por categoria y por texto ingresado en el input); 

@@ -157,6 +157,9 @@ const pal = document.getElementById("buscar-pal");
 // y pintar las tarjetas para que las muestre en html tb, sino quedan en la consola: 
 pal.addEventListener("input", e => {
     const filtrado = filtroCruzado();
+    if (filtroCruzado()==0){
+        return esSectionTres.innerHTML = `<h2> There are no events matching your search  </h2>`
+    }
     pintarTarjeta(filtrado, esSectionTres );
 })
 // creo una funcion que vaya filtrando cada palabra o caracter que ingresa el usuario en input pal (lo convierto a minuscula) y lo filtro
