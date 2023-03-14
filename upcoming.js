@@ -1,4 +1,76 @@
+// inicio task 4 con fetch como hice en el home;
+function datosViaUrl(){
+    const conseguirDatos = fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(response => response.json())
+    .then(data =>{
 
+        function filtrarListaEventosFuturos (lista){
+            let evPas = [];
+            for (let evento of data.events){
+                if (evento.date > lista.currentDate){
+                    evPas.push(evento);
+                }
+            } return evPas;
+        }
+        
+        const eventosFuturos = filtrarListaEventosFuturos(data);
+
+        const esSectionDos = document.getElementById("esSectionDos");
+        
+
+        pintarTarjeta(eventosFuturos, esSectionDos );
+
+        let listaCategorias = eventosFuturos.filter(evento => evento.category).map(evento => evento.category).filter( (evento, indice, arrayOriginal) => indice == arrayOriginal.indexOf(evento));
+        const opciones = listaCategorias.reduce( (acc, categoria) => {
+            return acc += `<input class="form-check-input" type="checkbox" id="check1" name="option1" value="${categoria}">
+            <label class="form-check-label">${categoria}</label>`
+        }, "" );
+        const $categorias = document.getElementById("categorias")
+        $categorias.innerHTML = opciones;
+
+
+        function filtroCategorias (lista){
+            const categoriasChecked = document.querySelectorAll( 'input[type="checkbox"]:checked' )
+            const arrayCategoriasChecked = Array.from(categoriasChecked).map($categorias => $categorias.value)
+            console.log(arrayCategoriasChecked)
+            if (arrayCategoriasChecked.length === 0){
+                return lista;
+            } else {
+                return lista.filter(evento => arrayCategoriasChecked.includes(evento.category))
+            }
+            }
+
+        const pal = document.getElementById("buscar-pal");
+        
+        function filtroPorTexto(lista) {
+            const ingresoPal = pal.value.toLowerCase(); //texto o letra q ingresa el usuario
+            const filtro = lista.filter(evento => evento.name.toLowerCase().includes(ingresoPal))
+            return filtro
+        }
+        
+        function filtroCruzado (){
+            const filtrado = filtroCategorias(eventosFuturos)
+            return filtroPorTexto(filtrado)
+        }
+        $categorias.addEventListener("change", e => {
+            const filtrado = filtroCruzado();
+            pintarTarjeta(filtrado, esSectionDos );
+        });
+      
+        pal.addEventListener("input", e => {
+            const filtrado = filtroCruzado();
+            if (filtroCruzado()==0){
+                return esSectionDos.innerHTML = `<h2> There are no events matching your search </h2>`
+            }
+            pintarTarjeta(filtrado, esSectionDos );
+        })
+    })
+    .catch(error => console.log(error));
+}
+
+datosViaUrl()
+
+                                //TASK 2
 
 function filtrarListaEventosFuturos (lista){
     let evFut = [];

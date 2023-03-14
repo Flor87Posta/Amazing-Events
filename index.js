@@ -1,3 +1,60 @@
+
+function datosViaUrl(){
+    const conseguirDatos = fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(response => response.json())
+    .then(data =>{
+        let listaCategorias = data.events.filter(evento => evento.category).map(evento => evento.category).filter( (evento, indice, arrayOriginal) => indice == arrayOriginal.indexOf(evento));
+        const opciones = listaCategorias.reduce( (acc, categoria) => {
+            return acc += `<input class="form-check-input" type="checkbox" id="check1" name="option1" value="${categoria}">
+            <label class="form-check-label">${categoria}</label>`
+        }, "" );
+        const $categorias = document.getElementById("categorias")
+        $categorias.innerHTML = opciones;
+        const esSection = document.getElementById("esSection");
+
+        pintarTarjeta(data.events, esSection );
+
+        function filtroCategorias (lista){
+            const categoriasChecked = document.querySelectorAll( 'input[type="checkbox"]:checked' )
+            const arrayCategoriasChecked = Array.from(categoriasChecked).map($categorias => $categorias.value)
+            console.log(arrayCategoriasChecked)
+            if (arrayCategoriasChecked.length === 0){
+                return lista;
+            } else {
+                return lista.filter(evento => arrayCategoriasChecked.includes(evento.category))
+            }
+            }
+
+        const pal = document.getElementById("buscar-pal");
+        
+        function filtroPorTexto(lista) {
+            const ingresoPal = pal.value.toLowerCase(); //texto o letra q ingresa el usuario
+            const filtro = lista.filter(evento => evento.name.toLowerCase().includes(ingresoPal))
+            return filtro
+        }
+        
+        function filtroCruzado (){
+            const filtrado = filtroCategorias(data.events)
+            return filtroPorTexto(filtrado)
+        }
+        $categorias.addEventListener("change", e => {
+            const filtrado = filtroCruzado();
+            pintarTarjeta(filtrado, esSection );
+        });
+      
+        pal.addEventListener("input", e => {
+            const filtrado = filtroCruzado();
+            if (filtroCruzado()==0){
+                return esSection.innerHTML = `<h2> There are no events matching your search </h2>`
+            }
+            pintarTarjeta(filtrado, esSection );
+        })
+    })
+    .catch(error => console.log(error));
+}
+
+datosViaUrl()
+                                        // TASK 2
 //voy a crear el div que contiene a todos los eventos:
 
 // const divCards = document.createElement("divCards");
@@ -208,6 +265,17 @@ console.log(filtroCruzado())
 
 
 
+                                        //PARA TASK 4
+
+//tenemos que usar tareas asincronicas, como promesas, async / await y fetch; y hacer de forma dinamica la tabla de stats
+
+// aplico Fetch (retorna siempre una promesa): que es una API como el DOM que permite hacer pedidos o solicitudes de recursos  a un JSON o a una URL (en la tarea es a URL)
+
+// Las promesas sirven para ejecutar dentro del codigo distintas tareas de forma asincronica, tienen 2 metodos: .then() y el .catch(), uno maneja los   
+// exitos y otro los errores
+
+//lo hice todo al comienzo puesto que al ser una funcion e ir ejecutando lo q esta despues del then no podia simplemente llamar a las funciones 
+// de afuera.. asi que copie y pegué todo
 
 
 

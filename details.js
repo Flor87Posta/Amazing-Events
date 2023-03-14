@@ -1,3 +1,28 @@
+function datosViaUrl(){
+    const conseguirDatos = fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(response => response.json())
+    .then(data =>{
+        const params = new URLSearchParams (location.search)
+        const id = params.get("id")
+        let detalleCard = data.events.find(element => element._id == id)
+        const $detalle = document.getElementById("detalle")
+
+        function renderCard (lista, elemento){
+            let template = ""
+            template += crearTarjetaConInner(lista)
+            elemento.innerHTML = template
+        }
+        
+        renderCard(detalleCard, $detalle)
+    })
+    .catch(error => console.log(error));
+}
+
+datosViaUrl()
+
+
+
+                                            // TASK 3
 //tenemos que rellenar el detalle de cada evento del boton mas info pero de forma dinamica
 
 
@@ -29,7 +54,7 @@ function crearTarjetaConInner (evento){
                 <p class="card-text">Place: ${evento.place}</p>
                 <p class="card-text">Capacity: ${evento.capacity}</p>
                 <p class="card-text">${evento.assistance ? "Assistance: " + evento.assistance : "Estimate: " + evento.estimate}</p>
-                <a href="./details.html?id=${evento._id}" class="card-link">More Info</a>
+             
             </div>
         </div>
         `
